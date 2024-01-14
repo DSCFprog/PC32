@@ -18,18 +18,19 @@ These are arranged as follows:
 - EBP: Offset Memory register, used to access memory as an array.
 
 ### Memory
-PC32 has 32MB of available memory fixed at at anytime at address 0x08052000, the programmer is free to use it as they please
+PC32 has 32MB of available memory fixed at at anytime at address 0x08052000, the programmer is free to use it as they please.
 **malloc** can be used to get more memory but it has to be managed using the **free** word. 
 
 ### Source Code
 Source is held in memory at all times, its divided in blocks of 1024 bytes.
-Replaces the **space(char 32)** for a tag containing function/color and length, asides from that its just ASCII.
+Replaces the **space(char 32)** for a tag containing function/color and length, 
+it also encodes numbers as their direct byte representation while letters are kept as traditional ASCII.
 
 ## Build Instructions
 PC32 is strictly a 32bit application and as such it needs a 32bit environment in order to be built,
 in linux you'll need multilib support.
 
-### Aditional requirements
+### Additional requirements
 - libmikmod(compiled for 32bit) for sound, you can turn this off by taking out -llibmikmod in the makefile
 - NASM
 - GLFW
